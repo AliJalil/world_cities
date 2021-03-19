@@ -1,3 +1,5 @@
+import helper.printMe
+import helper.toCSV
 import model.City
 import java.io.File
 
@@ -20,11 +22,14 @@ fun main() {
     }
     //endregion
 
-    println("total population: ${getTotalPopulation(citiesList)}")
-    println("population of far east city: ${getPopulationOfFarEastCity(citiesList)}")
-    println("cities start with 'B': ${countOfCitiesStartWith(citiesList, 'B')}")
-    println("cities belong Iraq: ${countOfCitiesBelongCountry(citiesList, "Iraq")}")
+//    println("total population: ${getTotalPopulation(citiesList)}")
+//    println("population of far east city: ${getPopulationOfFarEastCity(citiesList)}")
+//    println("cities start with 'B': ${countOfCitiesStartWith(citiesList, 'B')}")
+//    println("cities belong Iraq: ${countOfCitiesBelongCountry(citiesList, "Iraq")}")
 
+    val result = citiesList.filter { it.countryName == "Iraq" }.toCSV()
+    val file = File("output.csv")
+    file.writeText(result)
 }
 
 fun showError(message: String){
